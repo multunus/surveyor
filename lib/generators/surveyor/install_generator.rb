@@ -12,6 +12,7 @@ module Surveyor
       create_surveys
       create_survey_sections
       create_questions
+      create_recommendations
       create_question_groups create_answers
       create_response_sets
       create_responses
@@ -27,6 +28,7 @@ module Surveyor
       add_section_id_to_responses
       add_default_value_to_answers
       add_api_ids
+      add_api_id_to_recommendations
       add_display_type_to_answers
       add_api_id_to_question_groups
       add_api_ids_to_response_sets_and_responses

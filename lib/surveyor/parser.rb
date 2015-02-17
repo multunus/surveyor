@@ -69,7 +69,7 @@ module Surveyor
     def method_missing(missing_method, *args, &block)
       method_name, reference_identifier = missing_method.to_s.split("_", 2)
       type = full(method_name)
-      Surveyor::Parser.raise_error( "\"#{type}\" is not a surveyor method." )if !%w(survey survey_translation survey_section question_group question dependency dependency_condition answer validation validation_condition).include?(type)
+      Surveyor::Parser.raise_error( "\"#{type}\" is not a surveyor method." )if !%w(survey survey_translation survey_section question_group question dependency dependency_condition answer validation validation_condition recommendation).include?(type)
 
       Surveyor::Parser.rake_trace(reference_identifier.blank? ? "#{type} #{args.map(&:inspect).join ', '}" : "#{type}_#{reference_identifier} #{args.map(&:inspect).join ', '}",
                                   block_models.include?(type) ? 2 : 0)
@@ -111,6 +111,7 @@ module Surveyor
       when /^section$/; "survey_section"
       when /^g$|^grid$|^group$|^repeater$/; "question_group"
       when /^q$|^label$|^image$/; "question"
+      when /^r$|^label$|^image$/; "recommendation"
       when /^a$/; "answer"
       when /^d$/; "dependency"
       when /^c(ondition)?$/; context[:validation] ? "validation_condition" : "dependency_condition"
@@ -249,8 +250,8 @@ module SurveyorParserQuestionGroupMethods
     [ :question_group,
       :grid_answers,
       :question,
-      :dependency,
       :dependency_condition,
+      :dependency,
       :answer,
       :validation,
       :validation_condition ].each{|k| context.delete k}
@@ -425,3 +426,5 @@ module SurveyorParserValidationConditionMethods
     context[:validation].validation_conditions << context[:validation_condition] = self
   end
 end
+
+SurveyorParserRecommendationMethods = SurveyorParserQuestionMethods
