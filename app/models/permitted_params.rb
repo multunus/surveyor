@@ -32,7 +32,7 @@ class PermittedParams < Struct.new(:params)
     strong_parameters.permit(*question_attributes)
   end
   def question_attributes
-    [:survey_section, :question_group, :survey_section_id, :question_group_id, :text, :short_text, :help_text, :pick, :reference_identifier, :data_export_identifier, :common_namespace, :common_identifier, :display_order, :display_type, :is_mandatory, :display_width, :custom_class, :custom_renderer, :correct_answer_id, :recommendation_id]
+    [:survey_section, :question_group, :survey_section_id, :question_group_id, :text, :short_text, :help_text, :pick, :reference_identifier, :data_export_identifier, :common_namespace, :common_identifier, :display_order, :display_type, :is_mandatory, :display_width, :custom_class, :custom_renderer, :correct_answer_id, :recommendation_id, :analytics_event_name]
   end
 
   # question_group
@@ -40,7 +40,7 @@ class PermittedParams < Struct.new(:params)
     strong_parameters.permit(*question_group_attributes)
   end
   def question_group_attributes
-    [:text, :help_text, :reference_identifier, :data_export_identifier, :common_namespace, :common_identifier, :display_type, :custom_class, :custom_renderer]
+    [:text, :help_text, :reference_identifier, :data_export_identifier, :common_namespace, :common_identifier, :display_type, :custom_class, :custom_renderer, :analytics_event_name]
   end
 
   # answer

@@ -41,6 +41,8 @@ module Surveyor
       create_survey_translations
       add_input_mask_attributes_to_answer
       add_recommendation_id_to_questions
+      add_analytics_event_name_to_questions
+      add_analytics_event_name_to_question_groups
     )
 
     def readme
