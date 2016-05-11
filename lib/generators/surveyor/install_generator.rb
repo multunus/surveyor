@@ -43,6 +43,7 @@ module Surveyor
       add_recommendation_id_to_questions
       add_analytics_event_name_to_questions
       add_analytics_event_name_to_question_groups
+      add_signature_to_responses
     )
 
     def readme
