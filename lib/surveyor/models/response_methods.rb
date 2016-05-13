@@ -72,6 +72,15 @@ module Surveyor
           end
       end
 
+
+      def ip_address=(ip_address)
+        @ip_address = ip_address
+      end
+
+      def ip_address
+        @ip_address
+      end
+
       def time_format
         '%H:%M'
       end

@@ -144,7 +144,7 @@ module Surveyor
         !responses.any?{|r| r.survey_section_id == section.id}
       end
 
-      def update_from_ui_hash(ui_hash)
+      def update_from_ui_hash(ui_hash, ip_address)
         transaction do
           ui_hash.each do |ord, response_hash|
             api_id = response_hash['api_id']
@@ -164,6 +164,7 @@ module Surveyor
             else
               responses.build(updateable_attributes).tap do |r|
                 r.api_id = api_id
+                r.ip_address = ip_address
                 r.save!
               end
             end
